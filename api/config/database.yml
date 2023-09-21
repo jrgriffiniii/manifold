@@ -1,9 +1,9 @@
 <%
 
-  user = ENV["RAILS_DB_USER"]
-  pass = ENV["RAILS_DB_PASS"]
-  host = ENV["RAILS_DB_HOST"] || 'localhost'
-  port = ENV["RAILS_DB_PORT"] || 5432
+  user = ENV["RAILS_DB_USER"] || ENV["lando_database_creds_user"]
+  pass = ENV["RAILS_DB_PASS"] || ENV["lando_database_creds_password"]
+  host = ENV["RAILS_DB_HOST"] || ENV["lando_database_conn_host"] || "localhost"
+  port = ENV["RAILS_DB_PORT"] || ENV["lando_database_conn_port"] || 5432
   db   = ENV["RAILS_DB_NAME"] || 'manifold_development'
   test_db   = ENV["RAILS_TEST_DB_NAME"] || 'manifold_test'
 
@@ -15,7 +15,7 @@ common: &common
   encoding: unicode
   pool: 50
   port: <%= port %>
-  user: <%= user %>
+  username: <%= user %>
   database: <%= db %>
   password: "<%= pass %>"
 

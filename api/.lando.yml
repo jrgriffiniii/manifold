@@ -1,0 +1,7 @@
+name: manifold
+services:
+  database:
+    type: postgres:13
+    portforward: 5432
+    creds:
+      database: manifold_development

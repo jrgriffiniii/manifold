@@ -42,9 +42,13 @@ module Collections
     def initialize(*)
       super
 
-      @collectables = collectable_models.map do |collectable|
-        CollectableDefinition.new collectable, parent: self
-      end.reduce(&:to_multi_keyable_map)
+      @collectables = if collectable_models.empty?
+                        []
+                      else
+                        collectable_models.map do |collectable|
+                          CollectableDefinition.new(collectable, parent: self)
+                        end.reduce(&:to_multi_keyable_map)
+                      end
 
       @collectable_entries = @collectables.map(&:entry)
     end

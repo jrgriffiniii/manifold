@@ -2,7 +2,12 @@
 ENV["RAILS_ENV"] ||= "test"
 require "spec_helper"
 
-require File.expand_path("../config/environment", __dir__)
+#begin
+  require File.expand_path("../config/environment", __dir__)
+#rescue StandardError => error
+#  require 'pry-byebug'
+#  binding.pry
+#end
 
 require "rspec/rails"
 require "test_prof/recipes/rspec/let_it_be"

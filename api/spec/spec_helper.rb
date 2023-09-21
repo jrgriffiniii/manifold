@@ -1,4 +1,5 @@
 require 'simplecov'
+require 'pry-byebug'
 
 SimpleCov.start 'rails' do
   project_name "Manifold"
